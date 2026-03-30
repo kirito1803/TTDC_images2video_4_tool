@@ -417,6 +417,108 @@ def start_comfyui(asyncio_loop=None):
         asyncio.set_event_loop(asyncio_loop)
     prompt_server = server.PromptServer(asyncio_loop)
 
+    # =================================
+    from aiohttp import web
+    import uuid, os, json, traceback
+    import folder_paths
+    import execution
+
+    routes = prompt_server.routes
+
+    @routes.post("/api/run-image")
+    async def run_image(request):
+        try:
+            reader = await request.multipart()
+            field = await reader.next()
+
+            if field is None or field.name != "file":
+                return web.json_response({"error": "file field required"}, status=400)
+
+            filename = field.filename or f"{uuid.uuid4().hex}.jpg"
+
+            input_dir = folder_paths.get_input_directory()
+            save_path = os.path.join(input_dir, filename)
+
+            with open(save_path, "wb") as f:
+                while True:
+                    chunk = await field.read_chunk()
+                    if not chunk:
+                        break
+                    f.write(chunk)
+
+            # load workflow
+            with open("E:/__workspace/images2video_4_tool/ComfyUI/workflows/Main_test_current.json", "r", encoding="utf-8") as f:
+                workflow = json.load(f)
+
+            # inject node 18
+            workflow["18"]["inputs"]["image"] = filename
+
+            prompt_id = str(uuid.uuid4())
+
+            valid = await execution.validate_prompt(prompt_id, workflow, None)
+
+            if not valid[0]:
+                return web.json_response({"error": valid[1]}, status=400)
+
+            prompt_server.prompt_queue.put((
+                0,
+                prompt_id,
+                workflow,
+                {},
+                valid[2],
+                {}
+            ))
+
+            while True:
+                history = prompt_server.prompt_queue.get_history(prompt_id=prompt_id)
+
+                if prompt_id in history:
+                    result = history[prompt_id]
+
+                    outputs = result.get("outputs", {})
+
+                    for node_id, node_output in outputs.items():
+
+                        # handle image output
+                        if "images" in node_output:
+                            for img in node_output["images"]:
+                                filename = img["filename"]
+                                output_dir = folder_paths.get_output_directory()
+                                file_path = os.path.join(output_dir, filename)
+
+                                if os.path.exists(file_path):
+                                    return web.FileResponse(
+                                        file_path,
+                                        headers={
+                                            "Content-Disposition": f"attachment; filename={filename}"
+                                        }
+                                    )
+
+                        # handle video output (nếu có)
+                        if "videos" in node_output:
+                            for vid in node_output["videos"]:
+                                filename = vid["filename"]
+                                file_path = os.path.join(folder_paths.get_output_directory(), filename)
+
+                                if os.path.exists(file_path):
+                                    return web.FileResponse(
+                                        file_path,
+                                        headers={
+                                            "Content-Disposition": f"attachment; filename={filename}"
+                                        }
+                                    )
+
+                    return web.json_response(result)
+
+                await asyncio.sleep(1)
+
+        except Exception as e:
+            return web.json_response({
+                "error": str(e),
+                "trace": traceback.format_exc()
+            }, status=500)
+    # =================================
+
     if args.enable_manager and not args.disable_manager_ui:
         comfyui_manager.start()
 
