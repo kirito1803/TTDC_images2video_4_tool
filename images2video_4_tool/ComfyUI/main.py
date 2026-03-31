@@ -447,7 +447,7 @@ def start_comfyui(asyncio_loop=None):
                     f.write(chunk)
 
             # load workflow
-            with open("E:/__workspace/images2video_4_tool/ComfyUI/workflows/Main_test_current.json", "r", encoding="utf-8") as f:
+            with open("/content/images2video_4_tool/ComfyUI/workflows/Main_test_current.json", "r", encoding="utf-8") as f:
                 workflow = json.load(f)
 
             # inject node 18
