@@ -3059,6 +3059,7 @@
             "AGSoft Text Operation",
             "AGSoft Text Overlay",
             "AGSoft Text Replace",
+            "AGSoft Upscale Image",
             "AGSoftFloat",
             "AGSoftInt",
             "AGSoftLoadVideo",
@@ -5590,9 +5591,12 @@
             "PrimereClearNetworkTagsPrompt",
             "PrimereColorBalance",
             "PrimereConceptDataTuple",
+            "PrimereDehaze",
+            "PrimereDepthBlur",
             "PrimereDiTPurifyPrompt",
             "PrimereDithering",
             "PrimereDynamicParser",
+            "PrimereEdgeJitter",
             "PrimereEmbedding",
             "PrimereEmbeddingHandler",
             "PrimereEmbeddingKeywordMerger",
@@ -5600,6 +5604,8 @@
             "PrimereFaceAnalyzer",
             "PrimereFastSeed",
             "PrimereFilmRendering",
+            "PrimereFilmicCurve",
+            "PrimereFrequencySeparation",
             "PrimereHSL",
             "PrimereHistogram",
             "PrimereHypernetwork",
@@ -5609,10 +5615,12 @@
             "PrimereLLMEnhancer",
             "PrimereLLMEnhancerOptions",
             "PrimereLORA",
+            "PrimereLUT3D",
             "PrimereLYCORIS",
             "PrimereLatentNoise",
             "PrimereLensStyles",
             "PrimereLevelEndpoints",
+            "PrimereLocalLaplacian",
             "PrimereLoraKeywordMerger",
             "PrimereLoraStackMerger",
             "PrimereLycorisKeywordMerger",
@@ -11928,6 +11936,7 @@
             "Hy3DtoTD",
             "ImagetoTD",
             "ImagetoTD(JPEG)",
+            "ImagetoTD_Tagged",
             "LoadTDImage",
             "StringtoTD",
             "Tripo3DtoTD",
@@ -22420,23 +22429,23 @@
             "UltimateSDUpscale",
             "UltimateSDUpscaleCustomSample",
             "UltimateSDUpscaleNoUpscale",
-            "UmeAiRT_BboxDetectorLoader",
             "UmeAiRT_BlockImageLoader",
             "UmeAiRT_BlockImageProcess",
             "UmeAiRT_BlockSampler",
             "UmeAiRT_BundleLoader",
             "UmeAiRT_Bundle_Downloader",
             "UmeAiRT_ControlNetImageApply",
-            "UmeAiRT_ControlNetImageProcess",
             "UmeAiRT_Detailer_Daemon",
             "UmeAiRT_Faces_Unpack_Node",
             "UmeAiRT_FilesSettings_Checkpoint",
-            "UmeAiRT_FilesSettings_Checkpoint_Advanced",
             "UmeAiRT_FilesSettings_FLUX",
             "UmeAiRT_FilesSettings_Fragmented",
             "UmeAiRT_FilesSettings_ZIMG",
             "UmeAiRT_GenerationSettings",
             "UmeAiRT_HealthCheck",
+            "UmeAiRT_ImageProcess_Img2Img",
+            "UmeAiRT_ImageProcess_Inpaint",
+            "UmeAiRT_ImageProcess_Outpaint",
             "UmeAiRT_Label",
             "UmeAiRT_Log_Viewer",
             "UmeAiRT_LoraBlock_1",
@@ -22447,10 +22456,10 @@
             "UmeAiRT_Negative_Input",
             "UmeAiRT_Pack_Bundle",
             "UmeAiRT_Pipe_Unpack_Node",
-            "UmeAiRT_PipelineFaceDetailer",
             "UmeAiRT_PipelineImageSaver",
             "UmeAiRT_PipelineInpaintComposite",
             "UmeAiRT_PipelineSeedVR2Upscale",
+            "UmeAiRT_PipelineSubjectDetailer",
             "UmeAiRT_PipelineUltimateUpscale",
             "UmeAiRT_Positive_Input",
             "UmeAiRT_Signature",
@@ -32914,6 +32923,16 @@
             "title_aux": "ComfyUI-Caption-Cleaner"
         }
     ],
+    "https://github.com/crom8505/ComfyUI-Dynamic-Sigmas": [
+        [
+            "ConcatSigmas",
+            "DynamicSigmaScheduler",
+            "GraphSigmas"
+        ],
+        {
+            "title_aux": "ComfyUI-Dynamic-Sigmas"
+        }
+    ],
     "https://github.com/crystian/ComfyUI-Crystools": [
         [],
         {
@@ -42231,6 +42250,14 @@
             "title_aux": "ComfyUI 2D Pose Editor"
         }
     ],
+    "https://github.com/ketle-man/comfyui-vrm-pose-editor": [
+        [
+            "PoseEditor3D"
+        ],
+        {
+            "title_aux": "ComfyUI VRM Pose Editor 3D"
+        }
+    ],
     "https://github.com/kevinmcmahondev/comfyui-kmcdev-image-filter-adjustments": [
         [
             "ImageBlankAlpha",
@@ -42743,6 +42770,7 @@
             "PadImageBatchInterleaved",
             "PatchModelPatcherOrder",
             "PathchSageAttentionKJ",
+            "PlaySoundKJ",
             "PlotCoordinates",
             "PointsEditor",
             "PreviewAnimation",
@@ -46262,8 +46290,8 @@
     "https://github.com/lucasgattas/comfyui-egregora-divide-and-enhance": [
         [
             "Egregora Algorithm",
-            "Egregora Analyze Content",
             "Egregora Combine",
+            "Egregora Debug Mask",
             "Egregora Divide Select"
         ],
         {
@@ -47729,10 +47757,13 @@
             "AutoCrop",
             "CSVValueExtractor",
             "ColorQuantizer",
+            "ContourEndpointVisualizer",
+            "ContourGapCloser",
             "DashedToSolidLine",
             "ExtractBlack",
             "ExtractBlackAdvanced",
             "ExtractRed",
+            "HoleCounter",
             "LaserPathTracer",
             "LineDetector",
             "NonWhiteToBlack",
@@ -48538,7 +48569,8 @@
             "MVNT Generate Character",
             "MVNT Generate Dance",
             "MVNT List Styles",
-            "MVNT Load Motion"
+            "MVNT Load Motion",
+            "MVNT Preview BVH"
         ],
         {
             "title_aux": "ComfyUI-MVNT"
@@ -49250,7 +49282,9 @@
             "InoDelayAsync",
             "InoGetDateTimeAsBase64",
             "InoImageListToBatch",
+            "InoImagesFromFolderToReferenceLatent",
             "InoImagesToReferenceLatent",
+            "InoLength",
             "InoLoadImagesFromFolder",
             "InoNotBoolean",
             "InoOnImageListCompleted",
@@ -54689,6 +54723,7 @@
     ],
     "https://github.com/silveroxides/ComfyUI-RR-JointTagger": [
         [
+            "DINOv3CategoryConfig|redrocket",
             "DINOv3Tagger|redrocket",
             "Jtp3HydraTagger|redrocket",
             "RRJointTagger|redrocket"
@@ -56543,7 +56578,6 @@
             "ElementHueHue",
             "ElementHueSat",
             "Element_ImageCurve",
-            "Element_SigmaGraph",
             "Element_SigmaGraph_Curve",
             "EmptyImageRGB_Element",
             "FrameCalculator_Element",
@@ -60347,6 +60381,7 @@
         [
             "Flux2KleinConditioningEnhancer",
             "Flux2KleinPromptReferenceBalance",
+            "Flux2KleinReferenceAppearanceBalancer",
             "Flux2KleinReferenceLatentMixer",
             "Flux2KleinSectionedTextEncoder",
             "Flux2KleinTokenRegionController"
@@ -61576,6 +61611,7 @@
     ],
     "https://github.com/yushan777/ComfyUI-Y7Nodes": [
         [
+            "SamplerSelect_Name",
             "Y7Nodes_AspectRatioPicker",
             "Y7Nodes_CLIP_TokenCounter",
             "Y7Nodes_CatchEditTextNodeDual",

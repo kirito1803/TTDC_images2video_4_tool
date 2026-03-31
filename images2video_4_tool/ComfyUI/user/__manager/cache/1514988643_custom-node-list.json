@@ -45110,6 +45110,17 @@
             "title": "ComfyUI 2D Pose Editor"
         },
         {
+            "author": "ketle-man",
+            "description": "Interactive 3D pose editor inside ComfyUI. Load VRM/GLB/GLTF models, drag bones to pose, control shape keys/expressions, and capture as IMAGE. All Three.js dependencies are bundled locally (no CDN required).",
+            "files": [
+                "https://github.com/ketle-man/comfyui-vrm-pose-editor"
+            ],
+            "id": "comfyui-vrm-pose-editor",
+            "install_type": "git-clone",
+            "reference": "https://github.com/ketle-man/comfyui-vrm-pose-editor",
+            "title": "ComfyUI VRM Pose Editor 3D"
+        },
+        {
             "author": "senjinthedragon",
             "category": "utils/tags",
             "description": "Filters and rewrites gendered vocabulary in Danbooru tags and natural language prompts to fix female-biased output from models like TIPO.",
@@ -45442,7 +45453,7 @@
         },
         {
             "author": "yhryzy",
-            "description": "Cultural art evaluation nodes \u2014 L1-L5 scoring across 15+ traditions, Brief-driven creative workflows, and natural language feedback. Evaluate AI-generated art for cultural accuracy and get actionable improvement suggestions. Requires: pip install vulca",
+            "description": "Cultural art evaluation nodes \u2014 L1-L5 scoring across 13 traditions, Layered Generation + Inpainting, Brief-driven creative workflows. Evaluate AI-generated art for cultural accuracy and get actionable improvement suggestions. Requires: pip install vulca",
             "files": [
                 "https://github.com/vulca-org/comfyui-vulca"
             ],
@@ -45468,6 +45479,31 @@
             "install_type": "git-clone",
             "reference": "https://github.com/vegaflowltd/ComfyUI-VegaFlow",
             "title": "Vega Flow V8.9 \u2014 Temporal Stabilisation"
+        },
+        {
+            "author": "crom8505",
+            "description": "Custom sigma scheduler node for ComfyUI. Easily tune, visualize, and concatenate dynamic sigma curves with an interactive graph.",
+            "files": [
+                "https://github.com/crom8505/ComfyUI-Dynamic-Sigmas"
+            ],
+            "install_type": "git-clone",
+            "reference": "https://github.com/crom8505/ComfyUI-Dynamic-Sigmas",
+            "title": "ComfyUI-Dynamic-Sigmas"
+        },
+        {
+            "author": "Allan.M",
+            "description": "Intel Arc-first ComfyUI monitor with real-time GPU/CPU/RAM stats and an exclusive workflow execution success rate predictor. NVIDIA (CUDA) fully supported.",
+            "files": [
+                "https://github.com/allanmeng/ComfyUI-XPUSYS-Monitor"
+            ],
+            "id": "comfyui-xpusys-monitor",
+            "install_type": "git-clone",
+            "pip": [
+                "psutil",
+                "pynvml"
+            ],
+            "reference": "https://github.com/allanmeng/ComfyUI-XPUSYS-Monitor",
+            "title": "ComfyUI-XPUSYS-Monitor"
         },
         {
             "author": "Ser-Hilary",

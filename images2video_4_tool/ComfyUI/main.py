@@ -422,6 +422,7 @@ def start_comfyui(asyncio_loop=None):
     import uuid, os, json, traceback
     import folder_paths
     import execution
+    BASE_URL = os.environ.get("BASE_URL", "http://127.0.0.1:8188")
 
     routes = prompt_server.routes
 
@@ -447,7 +448,9 @@ def start_comfyui(asyncio_loop=None):
                     f.write(chunk)
 
             # load workflow
-            with open("/content/images2video_4_tool/ComfyUI/workflows/Main_test_current.json", "r", encoding="utf-8") as f:
+            BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+            WORKFLOW_PATH = os.path.join(BASE_DIR, "workflows", "Main_test_current.json")
+            with open(WORKFLOW_PATH, "r", encoding="utf-8") as f:
                 workflow = json.load(f)
 
             # inject node 18
@@ -483,30 +486,23 @@ def start_comfyui(asyncio_loop=None):
                         if "images" in node_output:
                             for img in node_output["images"]:
                                 filename = img["filename"]
-                                output_dir = folder_paths.get_output_directory()
-                                file_path = os.path.join(output_dir, filename)
 
-                                if os.path.exists(file_path):
-                                    return web.FileResponse(
-                                        file_path,
-                                        headers={
-                                            "Content-Disposition": f"attachment; filename={filename}"
-                                        }
-                                    )
+                                return web.json_response({
+                                    "status": "success",
+                                    "type": "image",
+                                    "download_url": f"{BASE_URL}/view?filename={filename}&subfolder=output&type=output"
+                                })
 
                         # handle video output (nếu có)
                         if "videos" in node_output:
                             for vid in node_output["videos"]:
                                 filename = vid["filename"]
-                                file_path = os.path.join(folder_paths.get_output_directory(), filename)
 
-                                if os.path.exists(file_path):
-                                    return web.FileResponse(
-                                        file_path,
-                                        headers={
-                                            "Content-Disposition": f"attachment; filename={filename}"
-                                        }
-                                    )
+                                return web.json_response({
+                                    "status": "success",
+                                    "type": "video",
+                                    "download_url": f"{BASE_URL}/view?filename={filename}&subfolder=output&type=output"
+                                })
 
                     return web.json_response(result)
 
