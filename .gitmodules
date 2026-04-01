@@ -1,0 +1,3 @@
+[submodule "images2video_4_tool/ComfyUI_FizzNodes"]
+	path = images2video_4_tool/ComfyUI_FizzNodes
+	url = https://github.com/FizzleDorf/ComfyUI_FizzNodes.git

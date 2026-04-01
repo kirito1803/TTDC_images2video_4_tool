@@ -1,0 +1,12 @@
+{
+    "Comfy.InstalledVersion": "1.41.21",
+    "Comfy.TutorialCompleted": true,
+    "Comfy.RightSidePanel.IsOpen": true,
+    "Comfy.Templates.SortBy": "default",
+    "Comfy.Queue.History.Expanded": false,
+    "Comfy.Minimap.NodeColors": true,
+    "Comfy.Minimap.Visible": false,
+    "Comfy.SnapToGrid.GridSize": 1,
+    "Comfy.LinkRenderMode": 2,
+    "Comfy.DevMode": true
+}
