@@ -5,11 +5,7 @@ __pycache__/
 !/input/example.png
 /models/
 /temp/
-<<<<<<< HEAD
 /custom_nodes/
-=======
-/custom_nodes/
->>>>>>> e6c77e35e00b557446e180b451cbb9f7c4a95262
 !custom_nodes/example_node.py.example
 extra_model_paths.yaml
 /.vs
@@ -28,10 +24,7 @@ web_custom_versions/
 openapi.yaml
 filtered-openapi.yaml
 uv.lock
-<<<<<<< HEAD
-=======
 comfyui-venv/
 tools/
 comfyui_venv/
 .env*
->>>>>>> e6c77e35e00b557446e180b451cbb9f7c4a95262
